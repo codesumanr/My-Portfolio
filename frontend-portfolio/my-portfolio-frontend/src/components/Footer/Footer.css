@@ -1,0 +1,125 @@
+
+
+:root {
+  
+    --footer-bg: #212529;       /* Bootstrap dark */
+    --footer-text-color: #adb5bd; /* Light gray for text */
+    --footer-heading-color: #ffffff; /* White for headings */
+    --footer-link-color: #ced4da;    /* Slightly lighter gray for links */
+    --footer-link-hover: #ffffff;   /* White on hover */
+    --footer-icon-color: #0dcaf0;  /* Accent color (Bootstrap info blue) */
+    --footer-divider-color: rgba(255, 255, 255, 0.15); /* Subtle divider */
+  }
+  
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    font-size: 0.95rem; /* Slightly smaller base font size for footer */
+  }
+  
+  /* Add some space below the last section before the footer */
+  /* Adjust selector if needed based on your overall page structure */
+  body > *:last-of-type:not(.footer) {
+    margin-bottom: 0.2 !important; /* Remove margin from last element */
+  }
+  /* Add space above footer - already done with pt-5 in JSX */
+  /* .footer { padding-top: 3rem; } */
+  
+  
+  .footer-col {
+    margin-bottom: 1.5rem; /* Ensure spacing between columns when they stack */
+  }
+  
+  .footer-heading {
+    color: var(--footer-heading-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-transform: uppercase; /* Optional: Uppercase headings */
+    letter-spacing: 0.5px; /* Optional: Slight letter spacing */
+  }
+  
+  .footer-text {
+    color: var(--footer-text-color);
+    line-height: 1.6;
+  }
+  
+  /* --- Links Styling (Quick Links & Contact) --- */
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 0.6rem; /* Space between list items */
+  }
+  
+  .footer-links a,
+  .footer-link-contact { /* Specific class for contact links */
+    color: var(--footer-link-color);
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
+    display: inline-block; /* Allow padding changes */
+  }
+  
+  .footer-links a:hover,
+  .footer-link-contact:hover {
+    color: var(--footer-link-hover);
+    text-decoration: none; /* Keep underline off unless desired */
+    padding-left: 5px; /* Subtle shift effect on hover */
+  }
+  
+  /* --- Contact Section Specifics --- */
+  .footer-contact .footer-icon {
+    color: var(--footer-icon-color);
+    margin-right: 10px;
+    vertical-align: middle; /* Align icon nicely with text */
+    font-size: 1.1em; /* Slightly larger icon */
+  }
+  
+  .footer-contact .footer-text { /* For non-linked text like location */
+     display: inline; /* Keep location text on same line */
+     vertical-align: middle;
+  }
+  
+  
+  
+  .social-icon {
+    color: var(--footer-link-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Needed for transform */
+  }
+  
+  .social-icon:hover {
+    color: var(--footer-icon-color); /* Use accent color on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+  }
+  
+  /* --- Divider --- */
+  .footer-divider {
+    border-top: 1px solid var(--footer-divider-color);
+  }
+  
+  /* --- Copyright --- */
+  .copyright-text {
+    color: var(--footer-text-color);
+    font-size: 0.85rem;
+  }
+  
+  /* --- Responsiveness --- */
+  @media (max-width: 767px) {
+    /* Optional: Center text in columns on mobile */
+    /* .footer-col {
+      text-align: center;
+    }
+    .footer-links, .footer-contact, .social-links {
+       justify-content: center;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+    }
+     .social-links a {
+        margin: 0 10px; Add horizontal margin if centering icons
+     } */
+  
+      .footer-heading {
+         font-size: 1rem; /* Slightly smaller headings */
+      }
+  }

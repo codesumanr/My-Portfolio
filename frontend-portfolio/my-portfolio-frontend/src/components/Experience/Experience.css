@@ -1,0 +1,276 @@
+/* ============================================= */
+/* Experience Timeline Styles                    */
+/* ============================================= */
+
+/* --- Variables for easy theming --- */
+:root {
+    --timeline-line-color: #dee2e6; /* Color of the central vertical line */
+    --timeline-line-width: 3px;     /* Width of the line */
+    --timeline-marker-bg: #0dcaf0;  /* Background of the dot/marker (using Bootstrap 'info' blue) */
+    --timeline-marker-border: #ffffff; /* Border color of the marker (match page bg) */
+    --timeline-marker-size: 16px;   /* Diameter of the marker */
+    --timeline-card-bg: #ffffff;    /* Background of the experience card */
+    --timeline-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    --timeline-text-color: #495057;
+    --timeline-heading-color: #343a40;
+    --timeline-meta-color: #6c757d;  /* Color for dates, location */
+    --timeline-badge-bg: #0dcaf0;     /* Default badge background (matches marker) */
+    --timeline-badge-text: #ffffff;  /* Default badge text color */
+  }
+  
+  /* --- Main Timeline Container --- */
+  .experience-timeline {
+    position: relative;
+    padding: 40px 0;
+    margin: 0 auto; /* Center the timeline if it has a max-width */
+    max-width: 900px; /* Adjust max-width as needed */
+  }
+  
+  /* --- The Vertical Line --- */
+  .experience-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Center the line */
+    width: var(--timeline-line-width);
+    background-color: var(--timeline-line-color);
+    transform: translateX(-50%); /* Precise centering */
+    z-index: 1; /* Behind markers and content */
+  }
+  
+  /* --- Individual Timeline Item --- */
+  .timeline-item {
+    position: relative;
+    margin-bottom: 50px; /* Space between items */
+    width: 50%; /* Each item takes half the width */
+    padding: 0 40px; /* Horizontal padding to create space from the center line */
+    box-sizing: border-box; /* Include padding in the width calculation */
+  }
+  
+  /* --- Alternating Sides --- */
+  /* Even items (2nd, 4th, etc.) - Position on the RIGHT */
+  .timeline-item:nth-child(even) {
+    left: 50%; /* Start from the middle */
+    padding-left: 40px; /* Padding on the left */
+    padding-right: 0;
+  }
+  
+  /* Odd items (1st, 3rd, etc.) - Position on the LEFT */
+  .timeline-item:nth-child(odd) {
+    left: 0; /* Start from the left edge */
+    padding-right: 40px; /* Padding on the right */
+    padding-left: 0;
+     /* Optional: Right-align text for left items if desired */
+     /* text-align: right;  */
+  }
+  /* Adjust card alignment if text-align: right is used above */
+  /* .timeline-item:nth-child(odd) .timeline-content {
+    text-align: left;
+  } */
+  
+  /* --- The Marker (Dot) --- */
+  .timeline-marker {
+    position: absolute;
+    top: 15px; /* Adjust vertical position to align with card title nicely */
+    left: 50%; /* Position horizontally centered on the main line */
+    width: var(--timeline-marker-size);
+    height: var(--timeline-marker-size);
+    background-color: var(--timeline-marker-bg);
+    border: 3px solid var(--timeline-marker-border);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Above the line, below content potentially */
+  }
+  
+  /* Adjust marker position for items on the LEFT */
+  .timeline-item:nth-child(odd) .timeline-marker {
+    left: auto; /* Reset left */
+    right: calc(-1 * var(--timeline-marker-size) / 2); /* Position relative to the right edge of the item's 50% width */
+    transform: translateX(0); /* Reset transform needed for centering */
+  }
+  
+  /* Adjust marker position for items on the RIGHT */
+  .timeline-item:nth-child(even) .timeline-marker {
+    left: calc(-1 * var(--timeline-marker-size) / 2); /* Position relative to the left edge of the item's 50% width */
+     transform: translateX(0);/* Reset transform needed for centering */
+  }
+  
+  
+  /* --- The Content Card --- */
+  .timeline-content {
+    position: relative; /* Needed for potential pseudo-elements like arrows */
+    background-color: var(--timeline-card-bg);
+    border: 1px solid var(--timeline-line-color); /* Subtle border */
+    border-radius: 8px;
+    box-shadow: var(--timeline-card-shadow);
+    z-index: 3; /* Ensure content is clickable and above line/marker */
+  }
+  
+  /* Optional: Add arrows pointing towards the timeline */
+  /* .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  } */
+  
+  /* Arrow for items on the RIGHT (points left) */
+  /* .timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--timeline-card-bg) transparent transparent;
+  } */
+  
+  /* Arrow for items on the LEFT (points right) */
+  /* .timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--timeline-card-bg);
+  } */
+  
+  /* --- Internal Card Styling --- */
+  .timeline-content .card-body {
+    padding: 20px 25px; /* Adjust card padding */
+  }
+  
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items top */
+    flex-wrap: wrap; /* Allow wrapping if space is tight */
+    gap: 5px; /* Space between title and date if they wrap */
+  }
+  
+  .job-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--timeline-heading-color);
+    margin-right: 10px; /* Space between title and date */
+  }
+  
+  .job-period {
+    font-size: 0.9rem;
+    color: var(--timeline-meta-color);
+    white-space: nowrap; /* Prevent date from wrapping */
+    flex-shrink: 0; /* Don't let the date shrink */
+  }
+  
+  .company-location {
+    font-size: 1rem;
+    color: var(--timeline-meta-color);
+  }
+  
+  .company-name {
+    color: var(--timeline-heading-color); /* Make company name slightly darker */
+    font-weight: 500; /* Or use fw-semibold like in JSX */
+  }
+  
+  .job-description {
+    font-size: 0.95rem;
+    color: var(--timeline-text-color);
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  
+  .skills-used {
+    margin-top: 15px;
+  }
+  
+  .skill-badge {
+    font-size: 0.8rem;
+    padding: 0.3em 0.6em; /* Adjust padding for pill badges */
+    /* Use variables for badge colors if desired */
+    background-color: var(--timeline-badge-bg) !important; /* Use important if Bootstrap overrides */
+    color: var(--timeline-badge-text) !important;
+    margin-right: 5px; /* From JSX me-1 */
+    margin-bottom: 5px; /* From JSX mb-1 */
+  }
+  
+  
+  /* ============================================= */
+  /* Responsiveness                                */
+  /* ============================================= */
+  
+  @media (max-width: 768px) {
+    /* --- Switch to single column layout --- */
+    .experience-timeline::before {
+      left: 20px; /* Move line to the left */
+      transform: translateX(0);
+    }
+  
+    .timeline-item {
+      width: 100%; /* Full width */
+      padding-left: 55px; /* Space for line and marker */
+      padding-right: 15px; /* Reduce right padding */
+      left: 0 !important; /* Override alternating 'left' style */
+      text-align: left !important; /* Ensure all text is left-aligned */
+      margin-bottom: 30px;
+    }
+  
+    /* Ensure right-side items are also reset */
+    .timeline-item:nth-child(even) {
+      left: 0 !important;
+      padding-left: 55px; /* Consistent padding */
+      padding-right: 15px;
+    }
+     /* Ensure left-side items are also reset */
+    .timeline-item:nth-child(odd) {
+      left: 0 !important;
+      padding-left: 55px; /* Consistent padding */
+      padding-right: 15px;
+    }
+  
+  
+    .timeline-marker {
+      left: 20px; /* Align marker with the line */
+      transform: translateX(-50%); /* Center marker on the line */
+      top: 15px; /* Adjust if needed */
+      /* Reset positioning overrides from odd/even rules */
+      right: auto;
+    }
+  
+    /* Remove or adjust arrows if they were used */
+    /* .timeline-content::before {
+      left: -10px;
+      right: auto;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent var(--timeline-card-bg) transparent transparent;
+    }
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+       border-width: 10px 10px 10px 0;
+       border-color: transparent var(--timeline-card-bg) transparent transparent;
+       left: -10px;
+       right: auto;
+       top: 20px;
+    } */
+  
+    
+     .job-period {
+         white-space: normal; /* Allow date to wrap */
+     }
+  }
+  
+  @media (max-width: 576px) {
+     .experience-timeline::before {
+         left: 15px;
+     }
+     .timeline-item {
+         padding-left: 45px;
+         padding-right: 10px;
+     }
+      .timeline-marker {
+         left: 15px;
+         width: 14px;
+         height: 14px;
+     }
+      .timeline-content .card-body {
+        padding: 15px 20px;
+      }
+       .job-title {
+          font-size: 1.1rem;
+       }
+  }

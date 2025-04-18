@@ -1,0 +1,136 @@
+/* ============================================= */
+/* Projects Section Styles                       */
+/* ============================================= */
+
+:root {
+    --project-card-bg: #f7fcff;
+    --project-card-border: #64a3e1; /* Lighter border */
+    --project-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --project-card-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --project-title-color: #2e8deb;
+    --project-text-color: #495057;
+    --project-badge-bg: #6c757d; /* Bootstrap secondary */
+    --project-badge-text: #ffffff;
+    --project-link-footer-bg: rgba(248, 249, 250, 0.7); /* Slightly transparent light */
+    --project-image-height: 100px; /* Control image height */
+  }
+  
+ 
+  
+  .project-card {
+    background-color: var(--project-card-bg);
+    max-height: 400px;
+    border: 1px solid var(--project-card-border);
+    border-radius: 8px; /* Consistent rounded corners */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden; /* Ensure image corners are clipped */
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: var(--project-card-shadow-hover);
+  }
+  
+  /* --- Project Card Image --- */
+  .project-card-img {
+    height: var(--project-image-height);
+    object-fit: cover; /* Scale image nicely */
+    object-position: center center; /* Center the image */
+    border-bottom: 1px solid var(--project-card-border); /* Separator line */
+  }
+  
+  /* --- Card Body --- */
+  .project-card .card-body {
+     /* d-flex and flex-column in JSX handle layout */
+     padding: 1.25rem; /* Standard card padding */
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--project-title-color);
+    margin-bottom: 2.00rem;
+  }
+  
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--project-text-color);
+    line-height: 1.3;
+    margin-bottom: 1rem; /* Space below description before tech stack */
+    /* Optional: Limit description lines */
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show 3 lines */
+    /* -webkit-box-orient: vertical;
+    overflow: hidden; */
+  }
+  
+  /* --- Tech Stack --- */
+  .tech-stack {
+    /* flex-wrap: wrap; /* Handled by default badge flow */
+    /* margin-top: auto; /* Pushes to bottom via flex in card-body */
+    padding-top: 0.5rem; /* Space above badges if description is short */
+  }
+  
+  .tech-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35em 0.65em; /* Adjust padding for pill badges */
+    /* Use custom variables or direct colors */
+    background-color: var(--project-badge-bg) !important; /* Override Bootstrap if needed */
+    color: var(--project-badge-text) !important;
+    /* me-1 mb-1 classes handle spacing in JSX */
+  }
+  
+  /* --- Card Footer & Links --- */
+  .project-card .card-footer.project-links {
+    background-color: var(--project-link-footer-bg);
+    border-top: 1px solid var(--project-card-border);
+    padding: 0.75rem 1.25rem; /* Footer padding */
+    display: flex; /* Align buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    gap: 0.8rem; /* Space between buttons */
+  }
+  
+  .project-button {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out; /* Smooth transition for buttons */
+  }
+  
+  .project-button .btn-icon {
+    margin-right: 0.4rem; /* Space between icon and text */
+    font-size: 1em; /* Make icon relative to button text size */
+  }
+  
+  /* Optional: Specific hover styles for buttons if needed */
+  /* .project-button:hover {
+     opacity: 0.85;
+  } */
+  
+  /* --- Responsiveness --- */
+  @media (max-width: 767px) {
+     :root {
+         --project-image-height: 180px; /* Slightly smaller image on mobile */
+     }
+     .project-title {
+        font-size: 1.15rem;
+     }
+     .project-description {
+        font-size: 0.9rem;
+     }
+     
+  }
+  
+  @media (max-width: 575px) {
+     /* Stack buttons vertically if needed */
+     /* .project-card .card-footer.project-links {
+        flex-direction: column;
+        align-items: flex-start;
+     }
+     .project-button {
+        width: 100%;
+        justify-content: center;
+     } */
+  }

@@ -1,0 +1,210 @@
+/* ============================================= */
+/* Index Styles - Base, Resets, Globals          */
+/* ============================================= */
+
+/* --- Font Import --- */
+/* Ensure fonts are loaded early */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* --- CSS Variables (Source of Truth) --- */
+/* Define your primary theme variables here */
+:root {
+  /* Colors */
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --success-color: #28a745; /* Added from other sample */
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #0dcaf0;
+
+  --text-color-dark: #343a40;
+  --text-color-light: #f8f9fa;
+  --text-muted: #6c757d;
+
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-dark: #212529;
+  --border-color: #dee2e6;
+
+  /* Layout & Effects */
+  --navbar-height: 70px;          /* <<< ADJUST: Ensure this matches your Header */
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-pill: 50px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --box-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+  --transition-func: ease;
+  --container-max-width: 1140px;
+}
+
+/* --- Global Resets & Base Styles --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* 1rem = 16px */
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-color-dark);
+  background-color: var(--bg-white); /* Use white as the absolute base */
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Fix for potential Bootstrap modal scrollbar shift */
+  /* padding-right: 0 !important; */ /* May not always be needed */
+}
+
+/* --- Base Element Styling --- */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-func);
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.75rem; /* Consistent bottom margin */
+  color: var(--text-color-dark); /* Default heading color */
+}
+/* Optional: Slightly different size defaults */
+/* h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; } */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove default focus outline (ensure alternatives exist for accessibility) */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: none; /* Override Bootstrap focus shadows if desired */
+}
+/* Example: Add custom focus style for accessibility */
+/* button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+} */
+
+
+/* --- Bootstrap Overrides & Enhancements --- */
+/* Ensure container uses max-width variable */
+.container, .container-fluid {
+  padding: 0 15px;  /* Default Bootstrap padding */
+  margin: 0 auto; /* Default Bootstrap centering */
+}
+@media (min-width: 1200px) {
+  .container {
+     max-width: var(--container-max-width);
+  }
+}
+
+/* Base button transition */
+.btn {
+  transition: all var(--transition-speed) var(--transition-func);
+  /* border-radius: var(--border-radius-pill); /* Optional: Default pill shape */
+}
+/* Add subtle hover lift */
+.btn:hover {
+  transform: translateY(-2px);
+  /* box-shadow: var(--box-shadow); /* Optional: Add shadow on hover */
+}
+
+/* Ensure alerts use border-radius */
+.alert {
+  border-radius: var(--border-radius-sm);
+}
+
+/* Base badge styling */
+.badge {
+  font-weight: 500; /* Slightly bolder */
+}
+
+/* Progress bar animation speed */
+.progress-bar-animated {
+  animation-duration: 1.5s; /* Slow down Bootstrap's animation */
+}
+
+/* --- Custom Scrollbar (Optional) --- */
+/* Works in WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05); /* Track color */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* Handle color */
+  border-radius: 10px;
+  border: 2px solid transparent; /* Creates padding around thumb */
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color); /* Handle color on hover */
+}
+
+/* --- Common Utility Classes (Optional - Use with caution) --- */
+/* Use Bootstrap classes first (e.g., text-primary, bg-dark) */
+/* Only add custom ones if Bootstrap doesn't cover the need */
+.text-accent {
+  color: var(--accent-color) !important;
+}
+/* Add other truly global utilities if absolutely necessary */
+
+
+/* --- Basic Animation Keyframes --- */
+/* Define reusable animations here */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); } /* Subtle pulse */
+  100% { transform: scale(1); }
+}
+
+/* Utility classes to apply animations - Framer Motion often handles this better */
+/* Consider removing these if exclusively using Framer Motion */
+.fadeInLeft { animation: fadeInLeft 0.8s ease-out both; }
+.fadeInRight { animation: fadeInRight 0.8s ease-out both; }
+.fadeInUp { animation: fadeInUp 0.8s ease-out both; }
+.pulse { animation: pulse 2s infinite ease-in-out; }

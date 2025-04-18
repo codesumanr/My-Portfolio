@@ -1,0 +1,149 @@
+/* ============================================= */
+/* Header Styles                                 */
+/* ============================================= */
+
+:root {
+    /* Define theme variables */
+    --navbar-height: 70px; /* Adjust as needed */
+    --navbar-bg-initial: rgba(33, 37, 41, 0.9); /* Dark transparent initial */
+    --navbar-bg-scrolled: #212529; /* Solid dark when scrolled */
+    --navbar-text-color: rgba(255, 255, 255, 0.8);
+    --navbar-link-hover: #ffffff;
+    --navbar-link-active: #0dcaf0; /* Bootstrap info color for active link */
+    --navbar-brand-color: #ffffff;
+    --navbar-toggler-icon-color: rgba(255, 255, 255, 0.7);
+    --navbar-toggler-border-color: rgba(255, 255, 255, 0.2);
+    --navbar-shadow-scrolled: 0 2px 10px rgba(0, 0, 0, 0.15);
+    --navbar-transition-speed: 0.3s;
+  }
+  
+  /* --- Base Navbar Styling --- */
+  .main-navbar {
+    min-height: var(--navbar-height);
+    background-color: var(--navbar-bg-initial) !important; /* Override Bootstrap potentially */
+    padding: 0.5rem 0; /* Adjust vertical padding */
+    transition: background-color var(--navbar-transition-speed) ease-in-out,
+                padding var(--navbar-transition-speed) ease-in-out,
+                box-shadow var(--navbar-transition-speed) ease-in-out;
+    backdrop-filter: blur(5px); /* Optional: Add blur effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+  }
+  
+  /* --- Scrolled State --- */
+  .main-navbar.navbar-scrolled {
+    background-color: var(--navbar-bg-scrolled) !important;
+    padding: 0.3rem 0; /* Slightly reduce padding */
+    box-shadow: var(--navbar-shadow-scrolled);
+    backdrop-filter: none; /* Remove blur when solid */
+    -webkit-backdrop-filter: none;
+  }
+  
+  /* --- Navbar Brand --- */
+  .navbar-brand {
+    font-size: 1.5rem; /* Larger brand text */
+    font-weight: 600;
+    color: var(--navbar-brand-color) !important; /* Ensure color override */
+    letter-spacing: 0.5px;
+    transition: color var(--navbar-transition-speed) ease;
+  }
+  .navbar-brand:hover {
+    color: var(--navbar-link-active) !important; /* Use active color on hover */
+  }
+  
+  /* --- Nav Links --- */
+  .navbar-nav .nav-link {
+    color: var(--navbar-text-color);
+    font-weight: 500;
+    padding: 0.6rem 1rem !important; /* Consistent padding */
+    margin: 0 0.2rem; /* Spacing between links */
+    position: relative; /* For pseudo-element underline */
+    transition: color var(--navbar-transition-speed) ease;
+    text-transform: uppercase; /* Optional: Uppercase links */
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  /* --- Nav Link Hover Effect --- */
+  .navbar-nav .nav-link:hover {
+    color: var(--navbar-link-hover);
+  }
+  
+  /* --- Active Nav Link Styling (using .active class added by NavLink) --- */
+  .navbar-nav .nav-link.active {
+    color: var(--navbar-link-active) !important; /* Use variable for active color */
+    font-weight: 600; /* Make active link bolder */
+  }
+  
+  /* Optional: Underline effect for active/hover links */
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px; /* Position underline */
+    left: 1rem; /* Match horizontal padding */
+    right: 1rem; /* Match horizontal padding */
+    height: 2px;
+    background-color: var(--navbar-link-active);
+    transform: scaleX(0); /* Initially hidden */
+    transform-origin: center;
+    transition: transform var(--navbar-transition-speed) ease-in-out;
+  }
+  
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link.active::after {
+    transform: scaleX(1); /* Show underline on hover/active */
+  }
+  /* Hide underline for button-like links if you add them */
+  /* .navbar-nav .nav-link.btn::after {
+    display: none;
+  } */
+  
+  
+  /* --- Navbar Toggler --- */
+  .navbar-toggler {
+    border-color: var(--navbar-toggler-border-color) !important;
+  }
+  
+  .navbar-toggler-icon {
+    /* Use background-image to color the hamburger icon lines */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+  
+  /* --- Collapsed Menu Styling (Mobile) --- */
+  @media (max-width: 991.98px) { /* Corresponds to expand="lg" */
+    .main-navbar {
+      /* Keep background consistent when collapsed menu is open */
+      background-color: var(--navbar-bg-scrolled) !important;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: var(--navbar-shadow-scrolled); /* Add shadow immediately */
+    }
+    .navbar-collapse {
+      /* Optional: Add a border or different background */
+       padding-bottom: 1rem; /* Add some space at the bottom */
+       margin-top: 0.5rem; /* Space between toggler and links */
+    }
+  
+    .navbar-nav {
+      align-items: flex-start !important; /* Align links left */
+    }
+  
+    .navbar-nav .nav-link {
+      padding: 0.8rem 1rem !important; /* Increase padding for easier tapping */
+      margin: 0.2rem 0; /* Vertical spacing */
+      width: 100%; /* Make links take full width */
+    }
+     /* Center the underline */
+    .navbar-nav .nav-link::after {
+        left: 1rem;
+        right: auto;
+        width: 30px; /* Fixed width underline */
+        transform-origin: left; /* Animate from left */
+    }
+  
+     /* Adjust button link margins */
+     /* .navbar-nav .nav-link.btn {
+        margin-top: 1rem !important;
+        margin-left: 1rem !important;
+        width: auto;
+     } */
+  }

@@ -1,0 +1,178 @@
+/* ============================================= */
+/* Global App Styles                             */
+/* ============================================= */
+
+/* --- Theme Variables --- */
+:root {
+  /* Colors */
+  --primary-color: #4361ee;        /* Main brand color */
+  --secondary-color: #3f37c9;      /* Accent or darker brand color */
+  --accent-color: #4895ef;         /* Lighter accent */
+  --text-color-dark: #343a40;      /* Dark text for light backgrounds (slightly darker than #333) */
+  --text-color-light: #f8f9fa;     /* Light text for dark backgrounds */
+  --text-muted: #6c757d;          /* Muted/secondary text */
+  --bg-light: #ffffff;             /* Default page background (changed to white) */
+  --bg-section-light: #f8f9fa;   /* Light background for alternating sections */
+  --bg-dark: #212529;            /* Dark background (e.g., footer, dark sections) */
+  --border-color: #dee2e6;         /* Default border color */
+
+  /* Layout & Effects */
+  --navbar-height: 70px;          /* <<< ADJUST based on your Header's actual height */
+  --footer-height: 100px;         /* <<< ADJUST based on your Footer's estimated height (optional) */
+  --border-radius: 8px;           /* Standard border radius */
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer default shadow */
+  --transition-speed: 0.3s;       /* Consistent transition speed */
+  --transition-func: ease;        /* Consistent transition timing function */
+  --container-max-width: 1140px;  /* Standard Bootstrap large container width */
+}
+
+/* --- Base & Resets --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
+  font-size: 16px;       /* Base font size (1rem = 16px) */
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-color-dark);    /* Default text color */
+  background-color: var(--bg-light); /* Default page background */
+  line-height: 1.6;                /* Improve readability */
+  -webkit-font-smoothing: antialiased; /* Improve font rendering */
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scrollbars caused by animations/overflows */
+}
+
+/* --- App Layout Structure --- */
+/* Add .app-container to the root div in App.jsx wrapping Header, Main, Footer */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure footer stays at bottom */
+}
+
+/* Add .main-content to the element wrapping your <Outlet/> or page content */
+.main-content {
+  flex: 1; /* Allows content to grow and push footer down */
+  /* Add padding top equal to fixed navbar height to prevent content overlap */
+  padding-top: var(--navbar-height);
+  /* Optional: Add padding bottom if footer is fixed height and needs space */
+  /* padding-bottom: var(--footer-height); */
+}
+
+/* --- Global Utility Styles --- */
+/* Use this class on section wrappers within pages for standard padding */
+.section-padding {
+  padding: 4rem 0; /* Default vertical padding */
+}
+
+/* Consistent styling for main titles on pages or large sections */
+.page-title,  /* Preferred class for page H1 */
+.section-title { /* For consistency if used elsewhere */
+  font-size: 2.2rem; /* Base size */
+  font-weight: 700;
+  color: var(--text-color-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative; /* Needed for pseudo-element */
+  padding-bottom: 0.75rem;
+  display: block; /* Ensure it takes full width for centering */
+}
+
+/* Underline effect for titles */
+.page-title::after,
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px; /* Width of the underline */
+  height: 4px; /* Thickness */
+  background-color: var(--primary-color); /* Use primary color */
+  border-radius: 2px;
+}
+
+/* Consistent styling for introductory text below titles */
+.page-description, /* Preferred class for page intro paragraphs */
+.section-description { /* For consistency if used elsewhere */
+  max-width: 700px; /* Limit width for readability */
+  margin: 0 auto 3rem auto; /* Center horizontally, add bottom margin */
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* --- Links & General Elements --- */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-func);
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: none; /* Avoid default underline if using other hover effects */
+}
+
+img {
+  max-width: 100%;
+  height: auto;      /* Maintain aspect ratio */
+  display: block;    /* Remove extra space below inline images */
+}
+
+/* --- Buttons (Global Overrides/Defaults if needed) --- */
+/* Example: Consistent transition for Bootstrap buttons */
+.btn {
+  transition: all var(--transition-speed) var(--transition-func);
+  /* Define other global button styles if desired */
+  /* border-radius: 50px; /* Example: default pill shape */
+}
+
+/* --- Responsiveness --- */
+@media (min-width: 1200px) {
+  /* Optional: Increase base font size or container width on very large screens */
+  /* html { font-size: 17px; } */
+}
+
+@media (max-width: 991.98px) { /* Below Large (Tablets) */
+  .section-padding {
+    padding: 3rem 0;
+  }
+  .page-title,
+  .section-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 767.98px) { /* Below Medium (Mobile) */
+  :root {
+    /* Adjust navbar height variable if it changes on mobile */
+    --navbar-height: 60px; 
+  }
+  .main-content {
+     /* Update padding if navbar height changes */
+     padding-top: var(--navbar-height); 
+  }
+  .section-padding {
+    padding: 2.5rem 0;
+  }
+  .page-title,
+  .section-title {
+    font-size: 1.7rem;
+  }
+  .page-description,
+  .section-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}

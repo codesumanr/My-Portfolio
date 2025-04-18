@@ -1,0 +1,208 @@
+/* ============================================= */
+/* Contact Section Styles                        */
+/* ============================================= */
+
+/* Define theme variables - Adjust these colors to match your portfolio's theme */
+:root {
+    --contact-bg-color: #f8f9fa; /* Light gray background for the section */
+    --contact-card-bg: #ffffff; /* White background for the info card */
+    --contact-border-color: #dee2e6; /* Light border color */
+    --contact-text-color: #495057; /* Primary text color (dark gray) */
+    --contact-heading-color: #343a40; /* Slightly darker for headings */
+    --contact-icon-color: #007bff; /* Accent color for icons (Bootstrap blue default) */
+    --contact-icon-hover-color: #0056b3; /* Darker accent color on hover */
+    --contact-link-color: #007bff; /* Link color */
+    --contact-link-hover-color: #0056b3; /* Link hover color */
+    --contact-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for the card */
+    --contact-border-radius: 8px; /* Rounded corners */
+  }
+  
+  .contact-section {
+    padding: 60px 0; /* Vertical padding */
+    background-color: var(--contact-bg-color);
+    font-family: 'Arial', sans-serif; /* Choose a professional font */
+  }
+  
+  /* Center the heading and intro paragraph specifically */
+  .contact-info h3,
+  .contact-info > p:first-of-type { /* Target the first paragraph directly under contact-info */
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--contact-heading-color);
+  }
+  
+  .contact-info h3 {
+      font-weight: 600;
+      font-size: 2rem; /* Slightly larger heading */
+  }
+  
+  .contact-info > p:first-of-type {
+      color: var(--contact-text-color);
+      font-size: 1.1rem;
+      max-width: 500px; /* Constrain intro paragraph width */
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2.5rem; /* More space after intro */
+  }
+  
+  
+  .contact-info {
+    background-color: var(--contact-card-bg);
+    padding: 30px 40px; /* Internal padding */
+    border-radius: var(--contact-border-radius);
+    box-shadow: var(--contact-shadow);
+    border: 1px solid var(--contact-border-color);
+  }
+  
+  /* Individual Contact Item (Email, Location) */
+  .contact-item {
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+    margin-bottom: 1.8rem; /* Space between items */
+    text-align: left; /* Ensure details are left-aligned */
+  }
+  
+  .icon-container {
+    flex-shrink: 0; /* Prevent icon container from shrinking */
+    margin-right: 20px; /* Space between icon and text */
+    display: flex; /* To center icon if needed, or manage link */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-container .icon-link,
+  .icon-container .icon {
+    font-size: 1.8rem; /* Icon size */
+    color: var(--contact-icon-color);
+    transition: color 0.3s ease; /* Smooth transition for hover */
+  }
+  
+  /* Style for linked icons */
+  .icon-container .icon-link:hover .icon,
+  .icon-container .icon-link:focus .icon {
+    color: var(--contact-icon-hover-color); /* Change color on hover/focus */
+  }
+  
+  /* Style for non-linked icons (like map marker) */
+  /* No specific styles needed unless you want hover effects */
+  
+  
+  .contact-details h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--contact-heading-color);
+  }
+  
+  .contact-details p {
+    font-size: 1rem;
+    color: var(--contact-text-color);
+    margin-bottom: 0;
+    word-break: break-word; /* Prevent long emails/URLs from overflowing */
+  }
+  
+  /* Style links within the paragraph (e.g., email address) */
+  .contact-details p a {
+      color: var(--contact-link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+  
+  .contact-details p a:hover,
+  .contact-details p a:focus {
+      color: var(--contact-link-hover-color);
+      text-decoration: underline; /* Add underline on hover for clarity */
+  }
+  
+  
+  /* Social Media Links Section */
+  .social-media-links {
+    margin-top: 2.5rem; /* Space above social links */
+    padding-top: 1.5rem; /* Add padding if a border is desired */
+    border-top: 1px solid var(--contact-border-color); /* Separator line */
+    text-align: center; /* Center the heading and icons */
+  }
+  
+  .social-media-links h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--contact-heading-color);
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center; /* Center icons horizontally */
+    gap: 20px; /* Space between icons using gap */
+  }
+  
+  .social-icon { /* This is the <a> tag */
+    display: inline-flex; /* Use flex for potential alignment */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Size of social icons */
+    color: var(--contact-text-color); /* Use text color or a specific social icon color */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  .social-icon:hover,
+  .social-icon:focus {
+    color: var(--contact-icon-color); /* Use accent color on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+  }
+  
+  /* ============================================= */
+  /* Responsiveness                                */
+  /* ============================================= */
+  
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 40px 0;
+    }
+  
+    .contact-info {
+      padding: 25px 20px; /* Reduce padding on smaller screens */
+    }
+  
+    .contact-info h3 {
+      font-size: 1.8rem;
+    }
+  
+     .contact-info > p:first-of-type {
+      font-size: 1rem;
+     }
+  
+    .contact-item {
+      margin-bottom: 1.5rem;
+    }
+  
+    .icon-container {
+      margin-right: 15px;
+    }
+  
+    .icon-container .icon-link,
+    .icon-container .icon {
+      font-size: 1.6rem; /* Slightly smaller icons */
+    }
+  
+    .social-icon {
+      font-size: 1.6rem; /* Slightly smaller social icons */
+    }
+  
+    .social-icons {
+      gap: 15px; /* Reduce gap */
+    }
+  }
+  
+  @media (max-width: 576px) {
+      .contact-info h3,
+      .contact-info > p:first-of-type,
+      .social-media-links h4 {
+          text-align: center; /* Ensure centered text on very small screens */
+      }
+  
+      
+  
+      
+  }

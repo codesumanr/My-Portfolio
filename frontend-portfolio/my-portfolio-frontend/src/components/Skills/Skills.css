@@ -1,0 +1,127 @@
+/* ============================================= */
+/* Skills Section Styles                         */
+/* ============================================= */
+
+:root {
+    --skill-card-bg: #fafafa;
+    --skill-card-border: #dee2e6;
+    --skill-card-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    --skill-card-hover-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    --skill-name-color: #343a40;
+    --skill-years-bg: #e9ecef; /* Bootstrap light */
+    --skill-years-text: #495057;
+    --skill-proficiency-label-color: #72787d; /* Bootstrap secondary */
+    --skill-progress-bg: #69a1d8; /* Background track of progress bar */
+    --skill-progress-radius: 4px; /* Rounded corners for progress bar */
+    --skill-icon-color: #0dcaf0; /* Example icon color */
+  }
+  
+  
+  
+  /* --- Skill Card --- */
+  .skill-card {
+    background-color: var(--skill-card-bg);
+    border: 1px solid var(--skill-card-border);
+    border-radius: 8px;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    overflow: hidden; /* Clip potential overflows */
+  }
+  
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--skill-card-hover-shadow);
+  }
+  
+  .skill-card .card-body {
+    padding: 1.25rem;
+  }
+  
+  /* --- Skill Header --- */
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+    gap: 0.5rem; /* Space between elements */
+  }
+  
+  /* Optional Icon Styling */
+  .skill-icon-wrapper {
+    font-size: 1.5rem; /* Adjust icon size */
+    color: var(--skill-icon-color);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  
+  .skill-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--skill-name-color);
+    line-height: 1.3;
+  }
+  
+  .skill-years {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3em 0.6em;
+    background-color: var(--skill-years-bg) !important; /* Ensure override */
+    color: var(--skill-years-text) !important;
+    flex-shrink: 0; /* Prevent badge from shrinking */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  /* --- Skill Progress --- */
+  .skill-progress {
+    margin-top: 1rem; /* Space above progress section */
+  }
+  
+  .proficiency-label {
+    font-size: 0.85rem;
+    color: var(--skill-proficiency-label-color);
+    font-weight: 500;
+  }
+  
+  .proficiency-level {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    color: #fff; /* Default text color, overridden by specific levels */
+    background-color: #6c757d; /* Default background (secondary) */
+  }
+  
+  /* Specific styling for proficiency levels - matches ProgressBar variants for consistency */
+  .proficiency-level.proficiency-beginner { background-color: #0dcaf0; } /* info */
+  .proficiency-level.proficiency-intermediate { background-color: #0d6efd; } /* primary */
+  .proficiency-level.proficiency-advanced { background-color: #ffc107; color: #343a40; } /* warning - needs dark text */
+  .proficiency-level.proficiency-expert { background-color: #dc3545; } /* danger */
+  
+  
+  .skill-progress-bar {
+    height: 8px; /* Make progress bar thinner */
+    background-color: var(--skill-progress-bg);
+    border-radius: var(--skill-progress-radius);
+    overflow: hidden; /* Ensure inner bar respects radius */
+  }
+  
+  /* Style the inner progress bar */
+  .skill-progress-bar .progress-bar {
+    border-radius: var(--skill-progress-radius);
+    /* Remove default transition if using framer-motion for reveal */
+    /* transition: width .6s ease; */
+    /* Optional: Add subtle gradient */
+    /* background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem; */
+  }
+  
+  /* Remove animation stripes if 'animated' prop is not used or desired */
+  /* .skill-progress-bar .progress-bar-animated { animation: none; } */
+  
+  
+  /* --- Responsiveness --- */
+  @media (max-width: 767px) {
+    .skill-name {
+      font-size: 1.1rem;
+    }
+    .skill-card .card-body {
+      padding: 1rem;
+    }
+  }

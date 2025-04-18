@@ -1,0 +1,369 @@
+/* ============================================= */
+/* Home Page Styles - Complete                   */
+/* Layout: Text Left, Circular Image Right (Hero)*/
+/* ============================================= */
+
+:root {
+  /* --- Core Palette --- */
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef; /* Or use var(--primary-color) */
+
+  /* --- Typography --- */
+  --font-primary: 'Poppins', sans-serif; /* RECOMMENDED: Link font in index.html */
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --text-color-dark: #212529;
+  --text-color-medium: #495057;
+  --text-color-light: #6c757d;
+  --text-color-inverted: #ffffff;
+  --text-color-inverted-secondary: rgba(255, 255, 255, 0.85);
+
+  /* --- Backgrounds --- */
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --bg-dark: #212529;
+  --hero-bg: var(--bg-dark);
+  --cta-bg: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+
+  /* --- Borders & Shadows --- */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-pill: 50px;
+  --border-radius-circle: 50%; /* Circle */
+  --border-color: #dee2e6;
+  --box-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --box-shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --box-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+  /* --- Spacing & Transitions --- */
+  --section-padding-y: 6rem;
+  --transition-base: all 0.3s ease-in-out;
+}
+
+/* --- Base & Body --- */
+body {
+  font-family: var(--font-primary, var(--font-system));
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color-dark);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.home-page {
+  /* Base page styling if needed */
+}
+
+/* --- General Section Styling --- */
+.page-section {
+  padding: var(--section-padding-y) 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-color-dark);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Remove underline in specific sections if desired */
+.hero-section .section-title::after,
+.cta-section .section-title::after {
+   display: none;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+/* Alternate background color for visual separation */
+.alternate-bg {
+  background-color: var(--bg-light);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  background-color: var(--hero-bg);
+  color: var(--text-color-inverted-secondary);
+  min-height: 85vh; /* Adjust as needed */
+  display: flex;
+  align-items: center; /* Vertically center content row */
+  position: relative;
+  padding: 4rem 0; /* Base padding, adjust if using container-fluid */
+}
+
+/* Specific overrides for fluid hero container if used in JSX */
+/* Add padding back if using container-fluid */
+.hero-container-fluid {
+    width: 100%;
+    max-width: 1320px; /* Optional max width */
+    padding-left: 1.5rem; /* Standard Bootstrap-like padding */
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Row alignment/distribution is handled by Bootstrap classes */
+
+.hero-content {
+  /* Text alignment handled by Bootstrap classes like 'text-center text-lg-start' */
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text-color-inverted);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.hero-content .highlight-name {
+  color: var(--primary-color);
+}
+
+.hero-title { /* h2 */
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 400;
+  color: var(--text-color-inverted-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 550px;
+  /* margin-left/right auto handled by text-center on small screens */
+}
+
+/* --- Hero Buttons --- */
+.hero-buttons .btn {
+  padding: 0.8rem 2rem;
+  border-radius: var(--border-radius-pill);
+  font-weight: 600;
+  transition: var(--transition-base);
+  border: 2px solid transparent;
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.hero-buttons .btn:last-child {
+    margin-right: 0;
+}
+
+.hero-buttons .hero-btn-primary {
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+   color: var(--text-color-inverted);
+   box-shadow: var(--box-shadow-sm);
+}
+.hero-buttons .hero-btn-primary:hover {
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
+   transform: translateY(-3px);
+   box-shadow: var(--box-shadow-md);
+   color: var(--text-color-inverted);
+}
+
+.hero-buttons .hero-btn-secondary {
+   background-color: transparent;
+   border-color: var(--text-color-inverted-secondary);
+   color: var(--text-color-inverted);
+}
+.hero-buttons .hero-btn-secondary:hover {
+   background-color: var(--text-color-inverted);
+   border-color: var(--text-color-inverted);
+   color: var(--hero-bg);
+   transform: translateY(-3px);
+}
+
+/* --- Hero Image --- */
+.hero-image-col {
+  /* Image positioning within column handled by */
+  /* Bootstrap flex utilities like 'd-flex justify-content-center justify-content-lg-end' */
+}
+
+.hero-image-wrapper {
+  max-width: 350px; /* Control max size */
+  width: 85%;      /* Allow some shrinking */
+  position: right;
+  margin-top: 10%;
+  margin-left: 40%;
+  
+  /* Margin for positioning removed - handled by flex on parent column */
+}
+
+.hero-profile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Force square before rounding */
+  object-fit: cover;   /* Cover the square area */
+  border-radius: var(--border-radius-circle); /* MAKE CIRCULAR */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Slightly enhanced shadow */
+  border: 3px solid rgba(255, 255, 255, 0.1); /* Optional subtle border */
+  /* NO hover effects */
+}
+
+
+/* --- Preview Sections (Skills, Experience, Projects) --- */
+/* Use .alternate-bg class on <section> for light background */
+
+.view-all-button-container {
+  margin-top: 3.5rem !important;
+}
+
+.view-all-button-container .btn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius-pill);
+  font-weight: 600;
+  transition: var(--transition-base);
+}
+
+.view-all-button-container .btn:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color-inverted);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-md);
+}
+/* Specific adjustment for buttons in alternate background sections */
+.alternate-bg .view-all-button-container .btn {
+   border-color: var(--secondary-color);
+   color: var(--secondary-color);
+}
+.alternate-bg .view-all-button-container .btn:hover {
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
+   color: var(--text-color-inverted);
+}
+
+
+/* --- Call to Action Section --- */
+.cta-section {
+  background: var(--cta-bg);
+  color: var(--text-color-inverted);
+  text-align: center;
+}
+
+.cta-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--text-color-inverted);
+  margin-bottom: 1rem;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  max-width: 700px;
+  line-height: 1.7;
+  opacity: 0.95;
+  margin: 0 auto 2rem auto;
+}
+
+.cta-button {
+   border-radius: var(--border-radius-pill);
+   padding: 0.9rem 2.4rem;
+   font-weight: 600;
+   background-color: var(--text-color-inverted);
+   color: var(--primary-color);
+   border: none;
+   transition: var(--transition-base);
+   box-shadow: var(--box-shadow-sm);
+}
+.cta-button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: var(--box-shadow-md);
+    background-color: #f1f3f5;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 991.98px) { /* Below large (LG breakpoint, tablets) */
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+  /* Bootstrap columns stack below lg */
+  .hero-content {
+    margin-bottom: 3rem !important; /* Space below text when stacked */
+  }
+   .hero-image-wrapper {
+     max-width: 300px;
+     width: 75%;
+   }
+   .page-section {
+     padding: calc(var(--section-padding-y) * 0.8) 0;
+   }
+   .section-title {
+     font-size: clamp(1.8rem, 4vw, 2.2rem);
+   }
+}
+
+@media (max-width: 767.98px) { /* Below medium (MD breakpoint, mobiles) */
+  .hero-section {
+    min-height: auto; /* Allow height to shrink */
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  /* Text alignment handled by Bootstrap: text-center */
+  /* Image centering handled by Bootstrap: justify-content-center */
+  .hero-image-wrapper {
+     max-width: 250px;
+  }
+   .hero-buttons {
+       text-align: center; /* Center the inline-block buttons */
+   }
+   .hero-buttons .btn {
+       display: inline-block; /* Allow side-by-side if space allows */
+       width: auto;
+       max-width: none;
+       margin: 0.5rem 0.25rem !important; /* Adjust spacing */
+       padding: 0.7rem 1.5rem;
+       font-size: 0.9rem; /* Slightly smaller buttons */
+   }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 1.9rem);
+   }
+    .section-subtitle {
+      font-size: 1rem;
+    }
+    .cta-title {
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
+    }
+    .view-all-button-container .btn,
+    .cta-button {
+      padding: 0.7rem 1.5rem;
+      font-size: 0.95rem;
+    }
+    .page-section {
+     padding: calc(var(--section-padding-y) * 0.7) 0;
+   }
+}
