@@ -10,10 +10,10 @@ const session = require('express-session');
 const connectDB = require('./db');
 
 // --- Route Imports ---
-const skillsRoutes = require('./Portfolio-Backend/components/skills/routes'); // Adjust path if needed
-const projectsRoutes = require('./Portfolio-Backend/components/projects/routes'); // Adjust path if needed
-const experienceRoutes = require('./Portfolio-Backend/components/experience/routes'); // Adjust path if needed
-const adminRoutes = require('./Portfolio-Backend/components/admin/routes'); // Adjust path if needed
+const skillsRoutes = require('./components/skills/routes.js'); // Adjust path if needed
+const projectsRoutes = require('./components/projects/routes.js'); // Adjust path if needed
+const experienceRoutes = require('./components/experience/routes.js'); // Adjust path if needed
+const adminRoutes = require('./components/admin/routes.js'); // Adjust path if needed
  //const portfolioInfoRoutes = require('./components/portfolioInfo/routes');
 
 // 3. Connect to Database

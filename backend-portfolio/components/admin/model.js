@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { scryptSync } = require("crypto");
-const db = require("../../../db");
+const db = require("../../db");
 
 const adminSchema = new mongoose.Schema({
     username: String,
