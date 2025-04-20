@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // Use environment variable or fallback
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-console.log(`Connecting to API at: ${API_URL}`); // Log only once
+const API_URL = 'https://my-portfolio-nuai.onrender.com';
 
 // Create Axios instance
 const api = axios.create({
