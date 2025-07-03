@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Use environment variable or fallback
-const API_URL = 'https://my-portfolio-nuai.onrender.com';
+const API_URL = https://my-portfolio-nuai.onrender.com';
 
 // Create Axios instance
 const api = axios.create({
