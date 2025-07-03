@@ -17,6 +17,15 @@ const Experience = mongoose.model("Experience", ExperienceSchema);
 async function initializeExperiences() {
     const experienceData = [
         {
+            title: "Software Developer",
+            company: "Reality AI Lab.", // Check for typos like the double dot?
+            location: "San Francisco,USA",
+            startDate: "May 2025",
+            endDate: "Present", // Consistent casing? "July"
+            description: "Collaborating with the team on AI-powered educational tools such as Marvel AI and Sky AI.",
+            skills: ["React", "Node.js", "MongoDB", "Spring Boot", "JavaScript", "Google Gemini", "REST APIs", "Git", "Postman", "AI Integration"]
+        },
+        {
             title: "Java Developer",
             company: "Zork Tech inc..", // Check for typos like the double dot?
             location: "Mohali",
