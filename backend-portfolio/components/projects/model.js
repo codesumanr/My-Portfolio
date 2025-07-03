@@ -16,19 +16,32 @@ const Project = mongoose.model("Project", ProjectSchema);
 // --- Initialization Function ---
 async function initializeProject() {
     const projectData = [
-         {
-            name: "DanceLover",
-            description: "DanceLover is a web application designed to help users discover nearby dance studios using Google Maps and watch curated dance videos via the YouTube API. Built with Node.js, Express.js, MongoDB, and Pug.",
-            projectUrl: "https://example.com/event-system",
-            githubUrl: "https://github.com/codesumanr/DanceLover",
-            techStack: ["ASP.NET Core", "C#", "Entity Framework", "SQL Server", "HTML", "CSS"]
+        {
+           
+    name: "Digital Bookshelf",
+  description: "A modern MERN-stack web application that allows users to explore, organize, and read books in one centralized platform. Integrated with the Open Library API, it features book search, categorized views, user login, favorites, and a clean responsive UI.",
+  projectUrl: "https://example.com/digital-bookshelf",
+  githubUrl: "https://github.com/codesumanr/Digitial-Bookshelf",
+  techStack: ["MongoDB", "Express.js", "React", "Node.js", "Open Library API"]
+
         },
         {
-            name: "Library Management system",
-            description: "An interactive platform that encourages smokers to quit smoking.",
-            projectUrl: "https://example.com/quitbuddy",
-            githubUrl: "https://github.com/codesumanr/librarysystem",
-            techStack: ["HTML", "CSS", "jQuery"]
+  name: "DanceLover",
+  description: "An interactive platform designed to connect dance enthusiasts with nearby dance studios using Google Maps integration. It also features curated dance videos from YouTube, allowing users to learn and get inspired from top dancers around the world.",
+  projectUrl: "https://example.com/dancelover",
+  githubUrl: "https://github.com/codesumanr/DanceLover",
+  techStack: ["Node.js", "Express.js", "MongoDB", "Pug", "Google Maps API", "YouTube API"]
+
+
+        },
+        {
+  name: "Library Management System",
+  description: "A lightweight web application that enables librarians to manage book inventory, borrowers, and lending operations efficiently. Designed for simplicity and usability, the system provides real-time updates and clean UI for fast interactions.",
+  projectUrl: "https://example.com/library-system",
+  githubUrl: "https://github.com/codesumanr/librarysystem",
+  techStack: ["HTML", "CSS", "JavaScript", "jQuery"]
+
+
         }
     ];
 
